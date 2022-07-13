@@ -6,7 +6,6 @@ let App = () => {
   let [secondNum, setSecondNum] = useState("0");
   let [operation, setOperation] = useState("+");
   let [answer, setAnswer] = useState();
-  // let [store, setStore] = useState("");
 
   let calculateAnswer = () => {
     // convert both nums to numbers?
@@ -24,21 +23,50 @@ let App = () => {
     }
   };
 
-  const updateFirst = (value) => {
-        if (firstNum === "0") {
-          setFirstNum((firstNum = "0"));
-        } else {
-          setFirstNum((firstNum += value));
-        }
-  }
+  // Could there be a single function that handles this (instead of one per button)
+  // if statement would cover both? if (firstNum === "0") {
+  //   (firstNum = "")
+  // } else {
+  //   (firstNum += "")
+  // }
 
-    const updateSecond = (value) => {
-      if (firstNum === "0") {
-        setSecondNum((secondNum = "0"));
-      } else {
-        setSecondNum((secondNum += value));
-      }
-    };
+  // -------- LEFT NUMBER PAD --------
+  const firstZero = () => {
+    if (firstNum === "0") {
+      setFirstNum((firstNum = "0"));
+    } else {
+      setFirstNum((firstNum += "0"));
+    }
+  };
+  const firstOne = () => {
+    if (firstNum === "0") {
+      setFirstNum((firstNum = "1"));
+    } else {
+      setFirstNum((firstNum += "1"));
+    }
+  };
+  const firstTwo = () => setFirstNum((firstNum += "2"));
+  const firstThree = () => setFirstNum((firstNum += "3"));
+  const firstFour = () => setFirstNum((firstNum += "4"));
+  const firstFive = () => setFirstNum((firstNum += "5"));
+  const firstSix = () => setFirstNum((firstNum += "6"));
+  const firstSeven = () => setFirstNum((firstNum += "7"));
+  const firstEight = () => setFirstNum((firstNum += "8"));
+  const firstNine = () => setFirstNum((firstNum += "9"));
+  const firstClear = () => setFirstNum((firstNum = "0"));
+
+  // -------- RIGHT NUMBER PAD --------
+  const secondZero = () => setSecondNum((secondNum += "0"));
+  const secondOne = () => setSecondNum((secondNum += "1"));
+  const secondTwo = () => setSecondNum((secondNum += "2"));
+  const secondThree = () => setSecondNum((secondNum += "3"));
+  const secondFour = () => setSecondNum((secondNum += "4"));
+  const secondFive = () => setSecondNum((secondNum += "5"));
+  const secondSix = () => setSecondNum((secondNum += "6"));
+  const secondSeven = () => setSecondNum((secondNum += "7"));
+  const secondEight = () => setSecondNum((secondNum += "8"));
+  const secondNine = () => setSecondNum((secondNum += "9"));
+  const secondVClear = () => setSecondNum((secondNum = "0"));
 
   // -------- OPERATOR PAD --------
   const addition = () => setOperation((operation = "+"));
@@ -52,8 +80,8 @@ let App = () => {
         <div className="panel">
           <p>{firstNum}</p>
           <div className="numbers">
-            <button onClick={() => updateFirst("1")}>1</button>
-            <button onClick={() => updateFirst("2")}>2</button>
+            <button onClick={firstOne}>1</button>
+            <button onClick={firstTwo}>2</button>
             <button onClick={firstThree}>3</button>
             <button onClick={firstFour}>4</button>
             <button onClick={firstFive}>5</button>
@@ -97,10 +125,6 @@ let App = () => {
           <div>
             <button onClick={calculateAnswer}>=</button>
           </div>
-          {/* <p>{store}</p>
-          <div>
-            <button onClick={recallStore}>Store</button>
-          </div> */}
         </div>
       </div>
 
@@ -181,6 +205,6 @@ let App = () => {
       </div>
     </>
   );
-}
+};
 
 export default App;

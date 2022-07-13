@@ -45,3 +45,18 @@ html {
   width: 100%;
   height: 40px;
 }
+
+.criteria {
+  padding: 0% 30%;
+  align-content: center;
+}
+
+.done {
+  color: grey;
+}
+
+/* body {
+  background: linear-gradient(-60deg, #eb36a6, #9b00de);
+  height: 100vh;
+  color: #ffffffdd;
+} */
