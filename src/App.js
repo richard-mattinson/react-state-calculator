@@ -5,8 +5,8 @@ let App = () => {
   const [firstNum, setFirstNum] = useState("0");
   let [secondNum, setSecondNum] = useState("0");
   let [operation, setOperation] = useState("+");
-  let [answer, setAnswer] = useState();
-  // let [store, setStore] = useState("");
+  let [answer, setAnswer] = useState("");
+  let [store, setStore] = useState("");
   console.log("Left", firstNum);
 
   let calculateAnswer = () => {
@@ -22,6 +22,30 @@ let App = () => {
     }
     if (operation === "/") {
       setAnswer(Number(firstNum) / Number(secondNum));
+    }
+  };
+
+  let updateStore = () => {
+    if(answer !== "") {
+      setStore (answer)
+    };
+  }
+
+  let firstRecallStore = () => {
+    if(store !== "") {
+      setFirstNum (store)
+  }
+}
+
+  let secondRecallStore = () => {
+    if (store !== "") {
+      setSecondNum(store);
+    }
+  };
+
+  let answerRecallStore = () => {
+    if (store !== "") {
+      setAnswer(store);
     }
   };
 
@@ -72,6 +96,7 @@ let App = () => {
             <button onClick={() => updateFirst("9")}>9</button>
             <button onClick={() => updateFirst("0")}>0</button>
             <button onClick={() => updateFirst("Clear")}>Clear</button>
+            <button onClick={firstRecallStore}>Restore</button>
           </div>
         </div>
 
@@ -99,18 +124,20 @@ let App = () => {
             <button onClick={() => updateSecond("9")}>9</button>
             <button onClick={() => updateSecond("0")}>0</button>
             <button onClick={() => updateSecond("Clear")}>Clear</button>
+            <button onClick={secondRecallStore}>Restore</button>
           </div>
         </div>
-        
+
         <div className="panel answer">
           <p>{answer}</p>
           <div>
             <button onClick={calculateAnswer}>=</button>
+            <button onClick={answerRecallStore}>Restore</button>
           </div>
-          {/* <p>{store}</p>
+          <p>{store}</p>
           <div>
-            <button onClick={recallStore}>Store</button>
-          </div> */}
+            <button onClick={updateStore}>Store</button>
+          </div>
         </div>
       </div>
 
@@ -157,18 +184,20 @@ let App = () => {
           </ul>
         </div>
 
-        <h2>Extension 2</h2>
-        <ul>
-          <li>
-            Add a "store" button underneath the answer. When this button is
-            clicked, the current answer should be stored in a state variable.
-          </li>
-          <li>
-            Add a "recall" button to each of the number displays. When this
-            button is clicked, the currently stored value should be shown on the
-            corresponding number panel.
-          </li>
-        </ul>
+       <div className="done">
+          <h2>Extension 2</h2>
+          <ul>
+            <li>
+              Add a "store" button underneath the answer. When this button is
+              clicked, the current answer should be stored in a state variable.
+            </li>
+            <li>
+              Add a "recall" button to each of the number displays. When this
+              button is clicked, the currently stored value should be shown on the
+              corresponding number panel.
+            </li>
+          </ul>
+       </div>
         <h2>Extension 3</h2>
         <ul>
           <li>
