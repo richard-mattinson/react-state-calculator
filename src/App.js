@@ -2,11 +2,12 @@ import { useState } from "react";
 import "./App.css";
 
 let App = () => {
-  let [firstNum, setFirstNum] = useState("0");
+  const [firstNum, setFirstNum] = useState("0");
   let [secondNum, setSecondNum] = useState("0");
   let [operation, setOperation] = useState("+");
   let [answer, setAnswer] = useState();
   // let [store, setStore] = useState("");
+  console.log("Left", firstNum);
 
   let calculateAnswer = () => {
     // convert both nums to numbers?
@@ -25,20 +26,28 @@ let App = () => {
   };
 
   const updateFirst = (value) => {
-        if (firstNum === "0") {
-          setFirstNum((firstNum = "0"));
-        } else {
-          setFirstNum((firstNum += value));
-        }
-  }
+    console.log("Value", value);
+    if (firstNum === "0") {
+      setFirstNum(value);
+      // console.log("Updated FirstNum", firstNum);
+    } else if (value === "Clear"){
+      setFirstNum("0");
+    } else {
+      setFirstNum((firstNum + value));
+    }
+  };
 
-    const updateSecond = (value) => {
-      if (firstNum === "0") {
-        setSecondNum((secondNum = "0"));
-      } else {
-        setSecondNum((secondNum += value));
-      }
-    };
+  const updateSecond = (value) => {
+    console.log("Value", value);
+    if (secondNum === "0") {
+      setSecondNum(value);
+      // console.log("Updated FirstNum", firstNum);
+    } else if (value === "Clear") {
+      setSecondNum("0");
+    } else {
+      setSecondNum(secondNum + value);
+    }
+  };
 
   // -------- OPERATOR PAD --------
   const addition = () => setOperation((operation = "+"));
@@ -54,15 +63,15 @@ let App = () => {
           <div className="numbers">
             <button onClick={() => updateFirst("1")}>1</button>
             <button onClick={() => updateFirst("2")}>2</button>
-            <button onClick={firstThree}>3</button>
-            <button onClick={firstFour}>4</button>
-            <button onClick={firstFive}>5</button>
-            <button onClick={firstSix}>6</button>
-            <button onClick={firstSeven}>7</button>
-            <button onClick={firstEight}>8</button>
-            <button onClick={firstNine}>9</button>
-            <button onClick={firstZero}>0</button>
-            <button onClick={firstClear}>Clear</button>
+            <button onClick={() => updateFirst("3")}>3</button>
+            <button onClick={() => updateFirst("4")}>4</button>
+            <button onClick={() => updateFirst("5")}>5</button>
+            <button onClick={() => updateFirst("6")}>6</button>
+            <button onClick={() => updateFirst("7")}>7</button>
+            <button onClick={() => updateFirst("8")}>8</button>
+            <button onClick={() => updateFirst("9")}>9</button>
+            <button onClick={() => updateFirst("0")}>0</button>
+            <button onClick={() => updateFirst("Clear")}>Clear</button>
           </div>
         </div>
 
@@ -79,19 +88,20 @@ let App = () => {
         <div className="panel">
           <p>{secondNum}</p>
           <div className="numbers">
-            <button onClick={secondOne}>1</button>
-            <button onClick={secondTwo}>2</button>
-            <button onClick={secondThree}>3</button>
-            <button onClick={secondFour}>4</button>
-            <button onClick={secondFive}>5</button>
-            <button onClick={secondSix}>6</button>
-            <button onClick={secondSeven}>7</button>
-            <button onClick={secondEight}>8</button>
-            <button onClick={secondNine}>9</button>
-            <button onClick={secondZero}>0</button>
-            <button onClick={secondVClear}>Clear</button>
+            <button onClick={() => updateSecond("1")}>1</button>
+            <button onClick={() => updateSecond("2")}>2</button>
+            <button onClick={() => updateSecond("3")}>3</button>
+            <button onClick={() => updateSecond("4")}>4</button>
+            <button onClick={() => updateSecond("5")}>5</button>
+            <button onClick={() => updateSecond("6")}>6</button>
+            <button onClick={() => updateSecond("7")}>7</button>
+            <button onClick={() => updateSecond("8")}>8</button>
+            <button onClick={() => updateSecond("9")}>9</button>
+            <button onClick={() => updateSecond("0")}>0</button>
+            <button onClick={() => updateSecond("Clear")}>Clear</button>
           </div>
         </div>
+        
         <div className="panel answer">
           <p>{answer}</p>
           <div>
